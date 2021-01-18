@@ -61,10 +61,17 @@ app.delete('/api/persons/:id', (request, response) => {
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
-  console.log(body.number, body.name)
-  if (!body.number && !body.name) {
+  if (!body.number || !body.name) {
     return response.status(400).json({ 
       error: 'body or number missing' 
+    })
+  }
+  
+  const filteredPersons = persons.filter(person => 
+    person.name.toLowerCase() !== body.name.toLowerCase())
+  if (filteredPersons.length < persons.length) {
+    return response.status(400).json({ 
+      error: `Name ${body.name} already found!`
     })
   }
   
