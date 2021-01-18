@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/persons
+Content-type: application/json
+
+{
+  "name": "Marinara dog",
+  "number": "123-123-marinara-best"
+}
