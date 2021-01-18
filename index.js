@@ -1,6 +1,17 @@
 const express = require("express")
+var morgan = require("morgan")
 const app = express()
-app.use(express.json()) 
+app.use(express.json())
+
+morgan.token('data', (req) => {
+  if (req.method === "POST"){
+    var myJSON = JSON.stringify(req.body)
+    return `${myJSON}`
+  } else {
+    return " "
+  }
+})
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :data'))
 
 let persons = [
   {
@@ -32,9 +43,9 @@ app.get("/", (request, response) => {
 
 app.get('/api/persons', (request, response) => {
   // Respond with a following jsons to browser
-  console.log(request)
   response.json(persons)
 })
+
 app.get('/info', (request, response) => {
   const date = new Date()
   response
@@ -66,7 +77,7 @@ app.post('/api/persons', (request, response) => {
       error: 'body or number missing' 
     })
   }
-  
+
   const filteredPersons = persons.filter(person => 
     person.name.toLowerCase() !== body.name.toLowerCase())
   if (filteredPersons.length < persons.length) {
