@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/persons
+POST http://phonebook-jahoo.herokuapp.com/api/persons
 Content-type: application/json
 
 {
