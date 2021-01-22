@@ -12,7 +12,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
   })
 
 const personSchema = new mongoose.Schema({
-  number: Number,
+  number: String,
   name: String
 })
 

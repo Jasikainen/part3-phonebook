@@ -16,6 +16,11 @@ mongoose.connect(url,
     useCreateIndex: true 
   })
 
+const personSchema = new mongoose.Schema({
+  number: String,
+  name: String
+})
+
 personSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
