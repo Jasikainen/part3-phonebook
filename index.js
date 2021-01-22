@@ -63,7 +63,7 @@ app.delete('/api/persons/:id', (request, response, next) => {
     .catch(error =>{
       console.log("toimiiko", error)
       next(error)
-    } 
+    } )
 })
 
 
