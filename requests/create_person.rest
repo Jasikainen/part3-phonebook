@@ -3,6 +3,6 @@ Content-type: application/json
 
 {
   "number": 123123123,
-  "name": "test"
+  "name": "testMan"
 }
 // http://phonebook-jahoo.herokuapp.com/api/persons
