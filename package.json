@@ -10,7 +10,8 @@
     "build:ui": "rmdir /Q/S build && cd D:/TTY/full_stack_open/fullstack-open-asikainen/osa2/puhelinluettelo && npm run build --prod && xcopy D:\\TTY\\full_stack_open\\fullstack-open-asikainen\\osa2\\puhelinluettelo\\build D:\\TTY\\full_stack_open\\part3-phonebook\\build /E /I /Y",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
-    "logs:prod": "heroku logs -t"
+    "logs:prod": "heroku logs -t",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "Jani Asikainen",
@@ -24,6 +25,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "eslint": "^7.18.0",
     "nodemon": "^2.0.7"
   }
 }
