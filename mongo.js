@@ -4,6 +4,7 @@ if (process.argv.length < 3) {
   console.log('give password as argument')
   process.exit(1)
 }
+
 const password = process.argv[2]
 const url = 
 `mongodb+srv://jani:${password}@cluster0.a96ed.mongodb.net/phonebook-app?retryWrites=true`
@@ -15,13 +16,13 @@ mongoose.connect(url,
     useCreateIndex: true 
   })
 
-// Define the schema
-const personSchema = new mongoose.Schema({
-  number: Number,
-  name: String
+personSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
 })
-// Create a document "template" out of schema
-const Person = mongoose.model('Person', personSchema)
 
 if (process.argv.length === 5) {
   // New object of Person
