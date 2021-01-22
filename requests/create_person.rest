@@ -2,7 +2,7 @@ POST http://localhost:3001/api/persons
 Content-type: application/json
 
 {
-  "number": 123123,
-  "name": "Test person"
+  "number": 123123123,
+  "name": "test"
 }
 // http://phonebook-jahoo.herokuapp.com/api/persons
